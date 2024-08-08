@@ -2,7 +2,7 @@
 CC = clang
 DBG = lldb
 
-build-main: build-dir
+build: build-dir
 	$(CC) -Wall -O0 -g -o build/main src/main.c
 
 check:
@@ -15,13 +15,13 @@ build-dir:
 build-test: build-dir
 	$(CC) -Wall -O0 -g -o build/test src/test.c
 
-run: build-main
+run: build
 	./build/main
 
 test: build-test
 	./build/test
 
-debug: build-main
+debug: build
 	$(DBG) ./build/main
 
 debug-test: build-test
